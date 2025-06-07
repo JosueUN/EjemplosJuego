@@ -5,18 +5,18 @@ class Personaje
 public:
     Personaje(sf::Vector2f position, sf::Color color)
     {
-        shape.setSize(sf::Vector2f(50, 50));
-        shape.setPosition(position); // Posición inicial cuadro
+        shape.setSize(sf::Vector2f(120, 120)); // Tamaño igual al frame del mono
+        shape.setPosition(position);
         shape.setFillColor(color);
 
         // Cargar la imagen desde un archivo
-        
-        if (!texture.loadFromFile("assets/images/pikachu.png"))
+        if (!texture.loadFromFile("assets/images/monkey.jpg"))
         {
-        
+            // Manejar error si es necesario
         }
         this->sprite = sf::Sprite(texture);
-        this->sprite.setPosition(position); // Posición inicial sprite
+        this->sprite.setPosition(position);
+        sprite.setTextureRect(sf::IntRect(0, 3 * frameHeight, frameWidth, frameHeight)); // Primer frame de la cuarta fila
     }
 
     void move(float offsetX, float offsetY)
@@ -32,11 +32,11 @@ public:
     }
 
     void update(){
-        // Actualizar el frame de la animación
+        // Animar los 4 changos de la cuarta fila (fila 3, columnas 0-3)
         if (clock.getElapsedTime().asSeconds() >= frameTime)
         {
             currentFrame = (currentFrame + 1) % numFrames;
-            sprite.setTextureRect(sf::IntRect((currentFrame * 64)+17, 133, 64, 36));
+            sprite.setTextureRect(sf::IntRect(currentFrame * frameWidth, 3 * frameHeight, frameWidth, frameHeight));
             clock.restart();
         }
     }
@@ -46,20 +46,20 @@ private:
     sf::Sprite sprite;
     sf::Texture texture;
     sf::Clock clock;
-    float frameTime = 0.1f; // Tiempo entre cada frame en segundos
+    float frameTime = 0.15f; // Tiempo entre cada frame en segundos
     int currentFrame = 0;
-    int numFrames = 4; // Número total de frames en la animación
-    int frameWidth = 32;
-    int frameHeight = 32;
+    int numFrames = 4; // Solo 4 frames en la cuarta fila
+    int frameWidth = 80;
+    int frameHeight = 115;
 };
 
-double velocidad = 0.1;
+double velocidad = .5;
 
 int main()
 {
-    sf::RenderWindow window(sf::VideoMode(800, 600), "DinoChrome");
+    sf::RenderWindow window(sf::VideoMode(800, 600), "Monkey Jumpey");
 
-    Personaje pika(sf::Vector2f(400, 300), sf::Color::Red);
+    Personaje mono(sf::Vector2f(400, 300), sf::Color::Transparent);
 
     while (window.isOpen())
     {
@@ -74,26 +74,27 @@ int main()
 
         if (sf::Keyboard::isKeyPressed(sf::Keyboard::Left))
         {
-            pika.move(velocidad * -1, 0);
+            mono.move(-velocidad, 0);
         }
         if (sf::Keyboard::isKeyPressed(sf::Keyboard::Right))
         {
-            pika.move(velocidad, 0);
+            mono.move(velocidad, 0);
         }
         if (sf::Keyboard::isKeyPressed(sf::Keyboard::Up))
         {
-            pika.move(0, velocidad * -1);
+            mono.move(0, -velocidad);
         }
         if (sf::Keyboard::isKeyPressed(sf::Keyboard::Down))
         {
-            pika.move(0, velocidad);
+            mono.move(0, velocidad);
         }
 
-        // Actualizar animacion pikachu
-        pika.update();
+        // Actualizar animación del mono
+        mono.update();
 
-        window.clear();
-        pika.draw(window);
+        // Fondo verde fuerte
+        window.clear(sf::Color(55, 153, 64));
+        mono.draw(window);
         window.display();
     }
 
