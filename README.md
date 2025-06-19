@@ -1,43 +1,40 @@
-# EjemplosJuego
+# Proyecto.cpp — Juego SFML Ejemplo
 
-El proyecto esta desarrollado sobre MinGW64 utilizando Msys2
-y como editor se esta utilizando Visual Studio Code.
+Este proyecto es un ejemplo de juego desarrollado en C++ utilizando la biblioteca [SFML] para gráficos, audio y manejo de ventanas. El código está modularizado en clases y cada clase se encuentra en su propio archivo `.hpp` para facilitar el mantenimiento y la escalabilidad.
 
-## Prerequisitos
+## Características
 
-[Instalar las herramientas necesarias](./docs/herramientas.md)
+- Juego tipo arcade donde controlas a un personaje (MiniMario) que debe esquivar obstáculos.
+- Fondo animado y música de fondo.
+- Puntaje que aumenta al esquivar obstáculos.
+- Código orientado a objetos.
 
-[Instalar las Extensiones VSCode](./docs/extensiones.md)
 
-[Instalar las librerias](./docs/librerias.md)
+## Requisitos
 
-[Clonar el repositorio](./docs/fork.md)
+- [SFML 2.5+]
+- Compilador C++ compatible (MinGW64 recomendado)
+- [Msys2]
+- Visual Studio Code.
 
-## Como ejecutar los ejemplos
+## Compilación y Ejecución
 
-Instalar todas las dependencias descritas arriba y dentro de una terminal de vscode ejecutar:
+1. **Instala todas las libreias y modifica el path como en las instrucciones de instalacion** 
+2. **Ejecuta el juego**:
+    "make runProyecto" en la terminal de compilacion.
 
-> make run'NombreEjecutable'
+## Uso
 
-Por ejemplo para ejecutar '00_Ventana.cpp' correr el comando en la terminal de vscode:
+- Usa las flechas izquierda y derecha para mover al personaje.
+- Esquiva los obstáculos para aumentar tu puntaje.
+- Pulsa `Enter` para reiniciar el juego si pierdes.
 
-> make run00_Ventana
+## Archivos principales
 
-## Errores comunes
-- [Los diagramas de PUML no se visualizan bien]()
+- `Proyecto.cpp`: Archivo principal que inicializa y ejecuta el juego.
+- `Fondo.hpp`: Clase para el fondo del juego.
+- `MiniMario.hpp`: Clase para el personaje principal.
+- `TileObstaculo.hpp`: Clase para los obstáculos.
+- `Juego.hpp`: Lógica principal del juego.
+- `MusicaFondo.hpp`: Música de fondo.
 
-## Buenas Practicas
-- [Como Crear un buen readme](https://www.makeareadme.com/)
-- [Patrones de diseño](https://refactoring.guru/es/design-patterns)
-- [Como hacer commits semanticos]()
-- [Como estructurar un proyecto]()
-- [Que tipos de licencias existen]()
-
-## Tutoriales Github
-- [Creacion de un repositorio]()
-- [Como colaborar en un proyecto]()
-- [Solicitar developer pack]()
-
-## Recursos Gratis
-- [Fuentes de texto gratis](https://www.dafont.com/es/)
-- [Recursos gratis de Videojuegos](https://opengameart.org/)

@@ -1,14 +1,10 @@
+#pragma once
 #include <SFML/Graphics.hpp>
-#include <SFML/Audio.hpp>
 #include <vector>
-#include <cstdlib>
-#include <ctime>
-#include <iostream>
 
-#include "../include/MusicaFondo.hpp"
-#include "../include/Fondo.hpp>
-#include "../include/MiniMario.hpp"
-#include "../include/TileObstaculo.hpp"
+#include <MiniMario.hpp>
+#include <Fondo.hpp>
+#include <TileObstaculo.hpp>
 
 
 class Juego {

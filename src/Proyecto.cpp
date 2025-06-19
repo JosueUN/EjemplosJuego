@@ -5,7 +5,7 @@
 #include <ctime>
 #include <iostream>
 
-#include "../include/MusicaFondo.hpp"
+#include <MusicaFondo.hpp>
 
 int main() {
     MusicaFondo musicaFondo("assets/music/mario.mp3");
@@ -14,7 +14,7 @@ int main() {
     Juego juego;
     juego.run();
 
-    musicaFondo.detener(); // Opcional
+    musicaFondo.detener();
     return 0;
 }
 
