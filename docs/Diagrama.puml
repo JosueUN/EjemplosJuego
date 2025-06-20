@@ -1,0 +1,67 @@
+@startuml Diagrama 
+
+class Juego {
+    + Jugar()
+    + Pausar()
+    + Actualizar()
+    + Dibujar()
+    - RenderWindow ventana
+    - MiniMario jugador
+    - Fondo fondo
+    - vector<TileObstaculo> obstaculos
+    - Texture tileset
+    - float obsVel
+    - float generar
+    - int puntaje
+    - bool pausado
+    - Font fuente
+    - Text puntajeTexto
+    - MusicaFondo musicaFondo
+}
+
+class MiniMario {
+    + MiniMario(Position)
+    + Dibujar()
+    + Mover()
+    + MirarDerecha()
+    + MirarIzquierda()
+    - Texture texturaDer
+    - Texture texturaIzq
+    - Sprite sprite
+    - bool mirandoDerecha
+}
+
+class Fondo {
+    + Fondo()
+    + Dibujar()
+    - Texture textura
+    - Sprite sprite
+}
+
+class TileObstaculo {
+    + TileObstaculo(Posicion)
+    + Dibujar()
+    + Mover()
+    + Contador(): bool
+    - Sprite sprite
+}
+
+class MusicaFondo {
+    + MusicaFondo()
+    + Reproducir()
+    - Music musica
+}
+
+class Position
+class JuegoPrincipal
+
+Juego "1" -|> "1" JuegoPrincipal
+Juego "1" *-- "1" MiniMario
+Juego "1" *-- "1" Fondo
+Juego "1" *-- "*" TileObstaculo
+Juego "1" o-- "1" MusicaFondo
+
+MiniMario "1" o-- "1" Position
+TileObstaculo "1" o-- "1" Position
+
+@enduml
